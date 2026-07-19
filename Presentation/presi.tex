@@ -1,0 +1,242 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% It has been edited for teaching purposes by Daniel Krähmer and Dr. Gerrit Bauer (LMU). 
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Further changes by Florian Sagerer.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	THEMES UND PACKAGES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer} % Mit diesem Befehl teilen Sie LaTeX mit, dass es sich beim vorliegenden Dokument um eine Präsentation ('beamer') handelt. 
+%aspectratio=43
+\usetheme{Boadilla} % Das Theme 'Boadilla' kombiniert ein schlichtes Design mit nützlichen Features. Ähnliches gilt für Themes wie z.B. 'Madrid' oder 'Pittsburgh'. 
+
+% Hier eine Reihe nützlicher Pakete, die wir im Folgenden benötigen:  
+\usepackage[english]{babel} % Legt die Ausgangssprache ihres Dokumentes fest. Dies betrifft unter anderem das Datumsformat, Anführungszeichen oder die Bezeichnung bestimmter Dokumentenabschnitte (z.B. 'Inhaltsverzeichnis' statt 'Contents' etc.). Für englischsprachige Dokumente können Sie den Befehl ausklammern oder \usepackage[english]{babel} festlegen.
+
+\usepackage[utf8]{inputenc} % Ermöglicht die reibungslose Verwendung von Sonderzeichen (z.B. Umlaute, Akzente etc.) sowie die saubere Silbentrennung entsprechender Wörter.
+
+\usepackage{lipsum} % Ermöglicht, mithilfe des Befehls \lipsum, einen klassischen Platzhaltertest ('lorem ipsum') in das Dokument einzufügen. 
+
+\usepackage[style=apa, sorting=none]{biblatex} % Dient der Literaturverwaltung und der automatisierten Erstellung von Literaturverzeichnissen.
+% Der Zitationsstil ist 'apa'. Mehr Informationen: 
+% https://www.overleaf.com/learn/latex/Biblatex_citation_styles
+
+\usepackage{hyperref} % Ermöglicht das Erstellen klickbarer Verlinkungen (z.B. Email-Adressen, URLs, Links innerhalb des Dokuments). Sämtliche Details lassen sich über \hypersetup{...} spezifizieren, z.B. \hypersetup{urlcolor=blue} für blaue URL-Links. 
+
+% ##################
+% Package for charts, diagramms
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest} %1.14
+
+% For "smart" tables
+\usepackage{pgfplotstable}
+
+\usepackage{booktabs} % Used for top-, bottom-, midrule
+%https://pgfplots.sourceforge.net/pgfplotstable_unstable.pdf
+
+\usepackage[table]{xcolor} % Table loads colortbl
+
+
+%------------------------------------------------------------
+% EINSTELLUNGEN
+%------------------------------------------------------------
+
+% Folgender Code bewirkt, dass unsere Präsentation eine Fußzeile enthält, in der sämtliche Kapitel als klickbare Verlinkungen erscheinen.
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}%
+    \insertsectionnavigationhorizontal{.7\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Entferne die Navigation-Symbole
+\beamertemplatenavigationsymbolsempty
+
+% Hier teilen Sie LaTeX mit, aus welcher Bibliothek die von Ihnen verwendeten Bib-Keys stammen. Liegt die entsprechende Bibliothek im selben Ordner wie Ihr LaTeX Dokument, reicht es, den Namen des Bib-Files ('Text.bib') anzugeben. Andernfalls geben Sie bitte den vollständigen Dateipfad an, also z.B. \addbibresource{H:\WiSe2021\Test.bib}.
+\addbibresource{resources.bib}
+
+
+
+%------------------------------------------------------------------
+%   FARBEN
+%------------------------------------------------------------------
+\definecolor{LMUGreen}{RGB}{0,136,58}
+\definecolor{Black}{RGB}{35,35,35}
+\definecolor{White}{RGB}{255,255,255}
+\definecolor{Darkgrey}{RGB}{98,100,104}
+\definecolor{Middlegrey}{RGB}{192,193,195}
+\definecolor{Lightgrey}{RGB}{230,230,231}
+\definecolor{Superlightgrey}{RGB}{245,245,245}
+
+\definecolor{uhdark}{RGB}{90, 20, 20}     % Titeltext dunkelrot
+\definecolor{uhred}{RGB}{180, 30, 30}     % Akzentrot (Bullets, Linie, Kachel)
+\definecolor{uhbox}{RGB}{160, 25, 25}     % Seitenzahl-Box
+
+\setbeamercolor{item projected}{bg=uhred,fg=White}
+
+\setbeamercolor{section in toc}{fg=Black,bg=White}
+\setbeamercolor{alerted text}{fg=uhdark}
+\setbeamercolor*{palette primary}{fg=uhdark,bg=Lightgrey}
+\setbeamercolor*{palette secondary}{fg=uhdark,bg=Lightgrey}
+\setbeamercolor*{palette tertiary}{bg=uhred,fg=White}
+\setbeamercolor*{palette quaternary}{fg=LMUGreen,bg=Black}
+
+\setbeamercolor*{sidebar}{fg=uhbox,bg=Lightgrey}
+
+\setbeamercolor*{palette sidebar primary}{fg=LMUGreen}
+\setbeamercolor*{palette sidebar secondary}{fg=White}
+\setbeamercolor*{palette sidebar tertiary}{fg=uhdark}
+\setbeamercolor*{palette sidebar quaternary}{fg=Lightgrey}
+
+\setbeamercolor{titlelike}{parent=palette primary,fg=uhdark}
+\setbeamercolor{frametitle}{bg=Lightgrey, fg=uhdark }
+\setbeamercolor{frametitle right}{bg=Middlegrey}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor*{bibliography entry author}{fg=uhdark}
+\setbeamercolor*{bibliography entry note}{fg=uhdark!80!white}
+
+%----------------------------------------------------------------------------------------
+%	TITELFOLIE 
+%----------------------------------------------------------------------------------------
+% Im Folgenden geben Sie LaTeX Informationen, welche später zur automatischen Erstellung einer Titelfolie verwendet werden. 
+
+% Titel: 
+\title{
+  \Huge MNIST Digit Recognition \\}
+
+% Name:
+\author{Markus Steinle | Christopher Neumann}
+
+% Universität, Institut, ggf. Kurs: 
+\institute{Ruprecht-Karls-University Heidelberg \\  
+ \textit{Reconfigurable Embedded Systems, 2026} % Falls gewünscht, können Sie hier weitere Details zum Kurs (z.B. Kursbezeichnung, Veranstaltungsnummer, DozentIn etc.) ergänzen.
+} 
+
+\date{\today} % Verwenden Sie den Befehl \today, fügt LaTeX automatisch das heutige Datum ein. Dies kann beispielsweise für schriftliche Abgaben sinnvoll sein. Wollen Sie hingegen im Voraus ein bestimmtes Datum festlegen (für Präsentationen empfehlenswert), ersetzen Sie \today entsprechend, z.B. durch \date{01.01.2000}. 
+
+
+\begin{document} % Ab hier beginnt das eigentliche Dokument.
+
+\begin{frame} % Öffnet eine erste Folie ('frame'). 
+\titlepage % Erstellt die Titelfolie auf Grundlage der obigen Informationen. 
+\end{frame} % Schließt die Folie. 
+
+%----------------------------------------------------------------------------------------
+%	INHALTSVERZEICHNIS
+%----------------------------------------------------------------------------------------
+
+ \begin{frame}{Content} % Anmerkung: Der Text im zweiten Paar geschweifter Klammern bestimmt die Überschrift Ihrer Folie.
+ \tableofcontents % Erstellt automatisch ein Inhaltsverzeichnis, das sämtliche Gliederungspunkte enthält, die Sie im folgenden mit \section{} und \subsection{} kennzeichnen. 
+ \end{frame}
+
+
+%----------------------------------------------------------------------------------------
+%	BEISPIELFOLIEN
+%----------------------------------------------------------------------------------------
+\section{Introduction} % Der \section-Befehl unterteilt Ihr LaTeX-Dokument in Abschnitte. Diesen Abschnitten sollten Sie aussagekräftige Namen geben, da Sie in Ihrer Gliederung auftauchen (also "Motivation", "Fragestellung" usw. statt "Erstes Kapitel", "Zweites Kapitel" etc.)
+
+\begin{frame}{Folie mit einheitlichem Text}
+\lipsum[1]
+\end{frame}
+
+%-----------------------------------------------
+
+\begin{frame}[fragile, allowframebreaks]{Fortlaufende Folien mit viel Text} % Hier werden die Optionen 'fragile' und 'allowframebreaks' miteinander kombiniert
+Manchmal reicht der Platz einer Folie nicht aus, um Ihre Gedanken zu einem Thema vollständig darzustellen. Machen Sie in diesem Fall von der Option \verb|[allowframebreaks]| Gebrauch. So teilen Sie \LaTeX mit, dass ein automatischer Seitenumbruch vorgenommen werden soll, sobald die Folie voll ist. Der Folientitel wird dann übernommen und durch eine römische Nummerierung ergänzt.\\
+
+\bigskip
+
+Hier ein Platzhalter zur Illustration: \textcolor[rgb]{0.4,0.4,0.4}{\lipsum[1-2]}
+
+\bigskip
+
+%enter the data sets as follows.
+\begin{filecontents}{All.csv}
+Item,Contributor,Percentage
+7-Segment Display, CN, 100~\%
+Training of the Model, MS, 100~\%
+Testing, CN + MS, 50~\% + 50~\%
+\end{filecontents}
+
+
+\pgfplotstableread[col sep=comma]{All.csv}\mytableAll %
+
+\begin{table}
+    \centering
+    \caption{Individual contribution: Markus Steinle (MS), Christopher Neumann (CN).}
+    \label{tab:All}
+    % requires \usepackage{booktabs,colortbl}
+    \pgfplotstabletypeset[
+        col sep=space,           % Use spaces as seperator
+        header=true,             % Use the first row as headers
+        string type,             % Interpret columns as text (prevents math errors with time ranges)
+        % Add formating for kB and ns
+        columns/Value/.style={
+        postproc cell content/.style={
+            @cell content={##1 (kB)} 
+        }
+    },
+    columns/Ticks/.style={
+        postproc cell content/.style={
+            @cell content={##1 (ns)}
+        }
+    },
+        every even row/.style={
+            before row={\rowcolor{Lightgrey}}
+        },
+        every head row/.style={
+            before row=\toprule,after row=\midrule
+        },
+        every last row/.style={
+            after row=\bottomrule
+        }
+        ]
+        {\mytableAll}
+\end{table}
+
+\end{frame}
+%-----------------------------------------------
+
+\section{Zweites Kapitel}
+
+\begin{frame}[fragile]{Folie mit Zitationen} 
+% Wichtig: Damit LaTeX weiß, was sich hinter dem Kürzel 'luhmann1984soziale' verbirgt, müssen Sie zunächst eine externe Bibliothek anlegen. Diese wird in dieser Datei oben in den Einstellungen eingebettet. Dort hinterlegen Sie sämtliche relevanten Informationen zu einer Publikation (z.B. Titel, AutorInnen, Erscheinungsjahr etc.) und legen einen sogenannten Bib-Key (hier: luhmann1984soziale) fest. Um eine Publikation in ihrem Latex Dokument anschließend zu zitieren, können Sie im cite-Befehl nun immer auf den Bib-Key zurückgreifen. 
+\begin{quote}
+	Die folgenden Überlegungen gehen davon aus, daß es Systeme gibt.
+Sie beginnen also nicht mit einem erkenntnistheoretischen Zweifel.
+Sie beziehen auch nicht die Rückzugsposition einer »lediglich analytischen Relevanz« der Systemtheorie. Erst recht soll die Engstinterpretation der Systemtheorie als eine bloße Methode der Wirklichkeitsanalyse vermieden werden. Selbstverständlich darf man
+Aussagen nicht mit ihren eigenen Gegenständen verwechseln; man
+muß sich bewußt sein, daß Aussagen nur Aussagen und wissenschaftliche Aussagen nur wissenschaftliche Aussagen sind. Aber sie
+beziehen sich, jedenfalls im Falle der Systemtheorie, auf die wirkliche Welt. Der Systembegriff bezeichnet also etwas, was wirklich ein
+System ist, und läßt sich damit auf eine Verantwortung für Bewährung seiner Aussagen an der Wirklichkeit ein.
+\end{quote}
+
+
+
+
+\end{frame}
+
+\end{document} % Dieser Befehl bildet zusammen mit \begin{document} den großen Rahmen für ihr LaTeX-Dokument. Ohne ihn gibt das Programm eine Fehlermeldung aus.
