@@ -217,7 +217,7 @@ class UartTool:
             return
 
         # Resize to 28x28, grayscale
-        small  = self.pil_image.resize((28, 28), Image.BILINEAR).convert('L')
+        small  = self.pil_image.resize((28, 28), Image.BOX).convert('L')
         
         small = small.point(lambda p: 255 if p > GRAYSCALE_BIAS_THRESHOLD else 0)
         
